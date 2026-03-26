@@ -41,21 +41,20 @@
         <script src="data/headwater_MA_ranked_1.js"></script>
         <script>
       var map = L.map('map', {
-    zoomControl: false,
-    maxZoom: 28,
-    minZoom: 1
+    zoomControl:false, maxZoom:28, minZoom:1
 }).fitBounds([[42.37489895816599,-72.18411905370546],[42.493876018148526,-72.01778625770362]]);
-
 var hash = new L.Hash(map);
 
-map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
-
-var satellite = L.tileLayer(
+var Esri_WorldImagery = L.tileLayer(
     'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     {
         attribution: 'Tiles &copy; Esri'
     }
-).addTo(map);
+);
+map.addLayer(Esri_WorldImagery);
+
+map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
 
 var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
 
